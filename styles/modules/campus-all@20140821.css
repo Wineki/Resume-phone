@@ -1,0 +1,20 @@
+@charset "utf-8";
+@import url(common/reset.css);
+@import url(common/base.css);
+@import url(common/jquery.custom-scrollbar.css);
+/*@import url(common/jquery.fullPage.css);*/
+
+@import url(modules/campus.css);
+
+
+/*pages*/
+
+@import url(modules/part_A.css);
+@import url(modules/part_B.css);
+@import url(modules/part_C.css);
+@import url(modules/part_D.css);
+@import url(modules/part_E.css);
+@import url(modules/part_F.css);
+@import url(modules/part_G.css);
+
+@import url(modules/footer.css);

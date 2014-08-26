@@ -1,0 +1,24 @@
+@charset "utf-8";
+/**
+ * csscute-reset 0.0.1
+ * Copyright (C) 2013 Qunar.com and other csscute-reset project contributors. All rights reserved.
+ */
+html { font:normal 12px/1.5 tahoma, arial, sans-serif; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background:#fff none; color:#555; }
+body, p, pre, dl, dd { margin:0; }
+img, iframe { border:0; }
+button, input, select, textarea { margin:0; font-family:inherit; *font-family:simsun, arial, sans-serif; font-size:100%; color:#555; }
+table { border-collapse:collapse; border-spacing:0; }
+h1, h2, h3, h4, h5, h6, th, td { margin:0; padding:0; font-size:100%; font-weight:400; text-align:left; }
+ol, ul { margin:0; padding:0; list-style:none; }
+em { font-style:normal; }
+a { color:#0069ca; text-decoration:none; }
+a:hover { color:#f60; text-decoration:none; }
+.clr { clear:both; height:0; overflow:hidden; }
+.clrfix { *zoom:1; }
+.clrfix:after { clear:both; display:block; height:0; visibility:hidden; content:"."; }
+.hide { display:none !important; }
+.hidden { visibility:hidden !important; }
+.m_ellipsis { text-overflow:ellipsis; white-space:nowrap; overflow:hidden; }
+.m_price { font-family:arial, sans-serif; font-style:normal; }
+.m_textadjust { -webkit-text-size-adjust:none; }/* CSS Document */
+
