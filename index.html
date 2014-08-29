@@ -9,40 +9,39 @@ body{color:#333;font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Aria
 #menu { margin: 0; padding: 0; position: fixed; left: 10px; top: 10px; list-style-type: none; z-index: 70;}
 #menu li { float: left; margin:  0 10px 0 0; font-size: 14px;}
 #menu a { float: left; padding: 10px 20px; background-color: #fff; color: #333; text-decoration: none;}
-img{-webkit-transition:all 0.7s ease-out;-moz-transition:all 0.7s ease-out;-o-transition:all 0.7s ease-out;transition:all 0.7s ease-out}
+img{width:100px;height:100px;}
 #menu .active a { color: #fff; background-color: #333;}
 .section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
-.section2 p{position: relative; left: -120%;}
+.section0 p{position: relative; left: -120%;}
+.section0 .sun{postion:relative; left:-45%; bottom:-100%;}
+.section0 .sun img{height:400px;width:600px;}
+.section0 .huojian{position:relative; left:-60%; bottom:-20%}
+.section0 .huojian img{height:150px; width:150px;}
+.section1  p{position: relative; bottom: -120%; font:20px "Microsoft Yahei"; color: #fff; }
+.section1  div{position:relative; float:left;}
+.section1 .connect{padding-left:60px; padding-right:60px;height:300px; width:450px;background:url(images/yuyan1.png)}
+.section1 .connect img{height:30px; width:30px; vertical-align:text-bottom;}
+.section1 .informat{ height:300px; width:200px;left:0%;background:url(images/yuyan1.png)}
+.section1 .informat img{height:30px; width:30px;vertical-align:text-bottom;}
+.section1 .girl img{height:400px; width:300px;}
+.section1 .niu{position:relative; bottom: -120%; left:0%;}
+.section1 .niu img{height:150px; width:150px;}
+.section2 .blackbord{margin:0 auto; height:500px; width:800px; background:url(images/heiban.jpg);}
+.section2 .blackbord img{position: relative;}
+.section2  p{position: relative; left: 0%; bottom:-10%;}
+.section2 .hend{position:relative; left:-150%; bottom:-10%;}
+.section2 .hend img{position:relative; height:200px;width:200px;}
+.section2 .words{position:relative; float:left; right:-150%; bottom:8%;}
+.section2 .words img{position:relative; height:300px; width:600px;}	
 .section3 p{position: relative; bottom: -120%;}
+.section3 .caodi{position:relative; width:100%; left:-20%; top:33%;}
+.section3 .caodi img{height:500px;width:900px; border-image-repeat:repeat;}
 .section4 p{display: none;}
 .section5 p{position: relative; left: -120%;}
 .section6 p{position: relative; bottom: -120%;}
 .section7 p{display: none;}
 </style>
 <link href="css/style.css" type="text/css" rel="stylesheet">
-<script src="js/jquery.js"></script>
-<script>
-var j = $.noConflict(true);
-</script>
-<script src="js/interface.js"></script>
-<script type="text/javascript">
-	j(function($){$(document).ready(
-		function()
-		{
-			$("#dock").Fisheye(
-				{
-					maxWidth: 50,
-					items: "a",
-					itemsText: "span",
-					container: ".dock-container",
-					itemWidth: 40,
-					proximity: 90,
-					halign : "center"
-				}
-			)
-		}
-	).appendTo('body');});
-</script>
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.min.js"></script>
 <script src="js/jquery.fullPage.min.js"></script>
@@ -50,40 +49,49 @@ var j = $.noConflict(true);
 </head>
 <body>
 <div id="ind">
-<div class="dock" id="dock">
-  <div class="dock-container">
-  <a class="dock-item" href="#"><img src="images/home.png" alt="home" /><span>Home</span></a> 
-  <a class="dock-item" href="#"><img src="images/email.png" alt="contact" /><span>Contact</span></a> 
-  <a class="dock-item" href="#"><img src="images/portfolio.png" alt="portfolio" /><span>Portfolio</span></a> 
-  <a class="dock-item" href="#"><img src="images/music.png" alt="music" /><span>Music</span></a> 
-  <a class="dock-item" href="#"><img src="images/video.png" alt="video" /><span>Video</span></a> 
-  <a class="dock-item" href="#"><img src="images/history.png" alt="history" /><span>History</span></a> 
-  <a class="dock-item" href="#"><img src="images/calendar.png" alt="calendar" /><span>Calendar</span></a> 
-  <a class="dock-item" href="#"><img src="images/rss.png" alt="rss" /><span>RSS</span></a>
-    </div>
-    </div>
     <div class="section section0" id="info">
         <h3>为前端发烧...</h3>
-        <p>我来了！！！</p>
+        <p>我来了！！！<img src="images/Wineki.jpg"></p>
+        <div class="sun"><img src="images/sun.png"></div>
+        <div class="huojian" id="huojian"><img src="images/huojian.png"></div>
 	</div>
     <div class="section section1" id="info">
-        <h3>关于我</h3>
-        <p>姓名：武宁</p>
+    	<div class="niu" id="niu"><img src="images/niu.png"></div>
+        <h3 style="position:relative; left:-5%">关于我</h3>
+        <h6>姓名：武宁&nbsp;&nbsp;&nbsp;Wineki</h6>
+        <div id="connect" class="connect">
+            <p><img src="images/yellow_mail.png">电话：186-1139-9041 </p>
+            <p><a href="wuning_aiali@163.com"><img src="images/rss.png"></a>邮箱：<a href="wuning_aiali@163.com">wuning_aiali@163.com</a></p>
+            <p><a href="http://blog.csdn.net/u014426752"><img src="images/link.png"></a>个人博客：<a href="http://blog.csdn.net/u014426752">http://blog.csdn.net/u014426752</a></p>
+            <p><a href="https://github.com/Wineki"><img src="images/home.png"></a>gitbuh主页：<a href="https://github.com/Wineki">https://github.com/Wineki</a></p>
+      	</div>
+        <div class="girl"><img src="images/girl.png"></div>
+        <div id="informat" class="informat">
+        	<p><img src="images/male_user.png">现居：北京</p>
+            <p><img src="images/red_heart.png">年龄：22 </p>
+            <p><img src="images/back.png">民族：汉</p>
+        </div>
 	</div>
      <div class="section section2" id="job">
-        <h3>求职意向</h3>
-        <p>web前端</p>
+     	<div class="blackbord" style="text-align:center">
+        <h3 style="position:relative;bottom:-10%;">求职意向</h3>
+        <p>前端开发</p>
+        <div class="words"><img src="images/2.png"></div>
+        <div class="hend"><img src="images/shou.png"></div>
+        </div>
 	</div>
     <div class="section section3" id="exp">
-        <h3>获奖经历</h3>
+    
+        <h3>我的作品</h3>
         <p>12345</p>
+        <div class="caodi"><img src="images/caodi.png"></div>
 	</div>
     <div class="section section4" id="abl">
-        <h3>专业技能</h3>
+        <h3>社团及项目经历</h3>
         <p>HTML js CSS</p>
 	</div>
     <div class="section section5" id="exp">
-        <h3>社团及项目经历</h3>
+        <h3>专业技能</h3>
         <p>12345</p>
 	</div>
     <div class="section section6" id="info">
@@ -100,60 +108,6 @@ var j = $.noConflict(true);
 	</div>
     
 </div>
-
 </body>
 </html>
-<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>CSS Mac Dock</title>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script>
-var $j = $.noConflict(true);
-</script>
-<script type="text/javascript" src="js/interface.js"></script>
-
-<!--[if lt IE 7]>
- <style type="text/css">
- div, img { behavior: url(iepngfix.htc) }
- </style>
-<![endif]
-
-<link href="css/style.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-<div class="dock" id="dock">
-  <div class="dock-container">
-  <a class="dock-item" href="#"><img src="css-dock-menu/css-dock-menu/images/home.png" alt="home" /><span>Home</span></a> 
-  <a class="dock-item" href="#"><img src="images/email.png" alt="contact" /><span>Contact</span></a> 
-  <a class="dock-item" href="#"><img src="images/portfolio.png" alt="portfolio" /><span>Portfolio</span></a> 
-  <a class="dock-item" href="#"><img src="images/music.png" alt="music" /><span>Music</span></a> 
-  <a class="dock-item" href="#"><img src="images/video.png" alt="video" /><span>Video</span></a> 
-  <a class="dock-item" href="#"><img src="images/history.png" alt="history" /><span>History</span></a> 
-  <a class="dock-item" href="#"><img src="images/calendar.png" alt="calendar" /><span>Calendar</span></a> 
-  <a class="dock-item" href="#"><img src="images/rss.png" alt="rss" /><span>RSS</span></a> 
-</div>
-</div>
-<script type="text/javascript">
-	$j(function($){$(document).ready(
-		function()
-		{
-			$("#dock").Fisheye(
-				{
-					maxWidth: 50,
-					items: "a",
-					itemsText: "span",
-					container: ".dock-container",
-					itemWidth: 40,
-					proximity: 90,
-					halign : "center"
-				}
-			)
-		}
-	).appendTo('body');});
-
-</script>
-</body>
-</html>-->
 

@@ -1,14 +1,40 @@
 // JavaScript Document
 $(document).ready(function() {
+	$('.section0').find('p').delay(500).animate({
+					left: '0'
+				}, 1500, 'easeOutExpo');
+	$('#huojian').delay(1500).animate({
+					left:'500',bottom:'500'
+				}, 1500,'easeOutExpo');
 	$.fn.fullpage({
-		slidesColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90','#7BAABE','#f90','#7BAABE','#f90','#7BAABE'],
+		slidesColor: [ '#2ECBC4','#4BBFC3', '#7BAABE', '#BDD1CF','#FF828E','#97C853','#1299AC','#AACBE7','#1bbc9b'],
 		anchors: ['page0','page1', 'page2', 'page3', 'page4','page5','page6','page7','page8'],
 		navigation: true,
 		afterLoad: function(anchorLink, index){
-			if(index == 3){
-				$('.section2').find('p').delay(500).animate({
+			if(index == 1){
+				$('.section0').find('p').delay(500).animate({
 					left: '0'
 				}, 1500, 'easeOutExpo');
+				$('#huojian').delay(1500).animate({
+					left:'500',bottom:'500'
+				}, 1500,'easeOutExpo');
+			}
+			if(index == 2){
+				$('.section1').find('p').delay(500).animate({
+					bottom: '0'
+				}, 1500, 'easeOutExpo');
+				$('.niu').animate({
+					bottom: '0'
+				}, 1500, 'easeOutExpo');
+			}
+			if(index == 3){
+				$('.section2').find('.hend').delay(500).animate({
+					left: '-300'
+				}, 1500, 'easeOutExpo');
+				$('.section2').find('.words').delay(500).animate({
+					right: '-100'
+				}, 1500, 'easeOutExpo');
+				
 			}
 			if(index == 4){
 				$('.section3').find('p').delay(500).animate({
@@ -33,10 +59,33 @@ $(document).ready(function() {
 			}
 		},
 		onLeave: function(index, direction){
-			if(index == '3'){
-				$('.section2').find('p').delay(500).animate({
+			if(index == '1'){
+				$('.section0').find('p').delay(500).animate({
 					left: '-120%'
 				}, 1500, 'easeOutExpo');
+				$('#huojian').delay(1000).animate({
+					left:'-500',bottom:'-500'
+				}, 1500,'easeOutExpo');
+			}
+			if(index == '2'){
+				$('.section1').find('p').delay(500).animate({
+					bottom: '-120%'
+				}, 1500, 'easeOutExpo');
+				$('.niu').delay(500).animate({
+					bottom: '-120%'
+				}, 1500, 'easeOutExpo');
+			}
+			if(index == '3'){
+				/*$('.section2').find('p').delay(500).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');*/
+				$('.section2').find('.hend').delay(800).animate({
+					left: '-150%'
+				}, 1500, 'easeOutExpo');
+				$('.section2').find('.words').delay(500).animate({
+					right: '-150%'
+				}, 1500, 'easeOutExpo');
+				
 			}
 			if(index == '4'){
 				$('.section3').find('p').delay(500).animate({
