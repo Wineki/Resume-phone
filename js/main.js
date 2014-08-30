@@ -7,8 +7,8 @@ $(document).ready(function() {
 					left:'500',bottom:'500'
 				}, 1500,'easeOutExpo');
 	$.fn.fullpage({
-		slidesColor: [ '#2ECBC4','#4BBFC3', '#7BAABE', '#BDD1CF','#FF828E','#97C853','#1299AC','#AACBE7','#1bbc9b'],
-		anchors: ['page0','page1', 'page2', 'page3', 'page4','page5','page6','page7','page8'],
+		slidesColor: [ '#2ECBC4','#4BBFC3', '#7BAABE', '#3399FF','#FF828E','#97C853','#1299AC'],
+		anchors: ['page0','page1', 'page2', 'page3', 'page4','page5','page6'],
 		navigation: true,
 		afterLoad: function(anchorLink, index){
 			if(index == 1){
@@ -37,12 +37,22 @@ $(document).ready(function() {
 				
 			}
 			if(index == 4){
-				$('.section3').find('p').delay(500).animate({
-					bottom: '0'
+				$('.dibiao1').find('img').fadeIn(2000);
+				$('.dibiao2').find('img').fadeIn(3000);
+				$('.dibiao3').find('img').fadeIn(4000);
+				$('.section3').find('p').slideDown(2000);
+				$('.section3').find('h3').animate({
+					right: '0'
 				}, 1500, 'easeOutExpo');
+				
 			}
 			if(index == 5){
-				$('.section4').find('p').fadeIn(2000);
+				$('.exp1').delay(500).animate({
+					left: '0'
+				}, 7000, 'easeOutExpo');
+				$('.exp2').animate({
+					top: '-620'
+				}, 4000, 'easeOutExpo');
 			}
 			if(index == 6){
 				$('.section5').find('p').delay(500).animate({
@@ -88,12 +98,21 @@ $(document).ready(function() {
 				
 			}
 			if(index == '4'){
-				$('.section3').find('p').delay(500).animate({
-					bottom: '-120%'
+				$('.dibiao1').find('img').fadeOut(2000);
+				$('.dibiao2').find('img').fadeOut(2000);
+				$('.dibiao3').find('img').fadeOut(2000);
+				$('.section3').find('p').slideUp(2000);
+				$('.section3').find('h3').delay(500).animate({
+					right: '-120%'
 				}, 1500, 'easeOutExpo');
 			}
 			if(index =='5'){
-				$('.section4').find('p').fadeOut(2000);
+				$('.exp1').delay(600).animate({
+					left: '-120%'
+				}, 1500, 'easeOutExpo');
+				$('.exp2').delay(600).animate({
+					top: '10%'
+				}, 2000, 'easeOutExpo');
 			}
 			if(index == '6'){
 				$('.section2').find('p').delay(500).animate({

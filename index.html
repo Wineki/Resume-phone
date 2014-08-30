@@ -10,8 +10,10 @@ body{color:#333;font-family:"Lucida Grande","Lucida Sans Unicode",Helvetica,Aria
 #menu li { float: left; margin:  0 10px 0 0; font-size: 14px;}
 #menu a { float: left; padding: 10px 20px; background-color: #fff; color: #333; text-decoration: none;}
 img{width:100px;height:100px;}
+highlight{color:#3F9;}
 #menu .active a { color: #fff; background-color: #333;}
 .section { text-align: center; font: 50px "Microsoft Yahei"; color: #fff;}
+.section a{text-decoration:none;}
 .section0 p{position: relative; left: -120%;}
 .section0 .sun{postion:relative; left:-45%; bottom:-100%;}
 .section0 .sun img{height:400px;width:600px;}
@@ -31,12 +33,23 @@ img{width:100px;height:100px;}
 .section2  p{position: relative; left: 0%; bottom:-10%;}
 .section2 .hend{position:relative; left:-150%; bottom:-10%;}
 .section2 .hend img{position:relative; height:200px;width:200px;}
-.section2 .words{position:relative; float:left; right:-150%; bottom:8%;}
+.section2 .words{position:relative; float:left; right:-150%; top:0%;}
 .section2 .words img{position:relative; height:300px; width:600px;}	
-.section3 p{position: relative; bottom: -120%;}
-.section3 .caodi{position:relative; width:100%; left:-20%; top:33%;}
-.section3 .caodi img{height:500px;width:900px; border-image-repeat:repeat;}
-.section4 p{display: none;}
+.section3 {background:url(images/map.jpg);}
+.section3 p{font-size:25px; font-weight:bold; display:none}
+.section3 img{display:none;}
+.section3 h3{position:relative; right:-120%;}
+.section3 .wxhzp p{color:#F3C; position:absolute; left:600px; top:45px;}
+.section3 .dola p{color:#39F; position:absolute; left:245px; top:360px;}
+.section3 .eluosi p{color:#96C; position:absolute; right:280px; top:370px;}
+.section4 {background:url(images/white.jpg);}
+.section4 p{position: relative; bottom: -120%;}
+.section4 .caodi{position:absolute; width:100%; left:10px; top:570px;}
+.section4 .caodi img{height:100px;width:200px;}
+.section4 .exp1{position:relative; top:-7%; left:-100%;}
+.section4 .exp1 img{height:300px; width:500px;}
+.section4 .exp2{position:relative; top:10%; left:32%;}
+.section4 .exp2 img{height:300px; width:500px;}
 .section5 p{position: relative; left: -120%;}
 .section6 p{position: relative; bottom: -120%;}
 .section7 p{display: none;}
@@ -45,7 +58,7 @@ img{width:100px;height:100px;}
 <script src="js/jquery-1.8.3.min.js"></script>
 <script src="js/jquery-ui-1.10.3.min.js"></script>
 <script src="js/jquery.fullPage.min.js"></script>
-<script src="js/main.js"></script>-
+<script src="js/main.js"></script>
 </head>
 <body>
 <div id="ind">
@@ -60,10 +73,10 @@ img{width:100px;height:100px;}
         <h3 style="position:relative; left:-5%">关于我</h3>
         <h6>姓名：武宁&nbsp;&nbsp;&nbsp;Wineki</h6>
         <div id="connect" class="connect">
-            <p><img src="images/yellow_mail.png">电话：186-1139-9041 </p>
-            <p><a href="wuning_aiali@163.com"><img src="images/rss.png"></a>邮箱：<a href="wuning_aiali@163.com">wuning_aiali@163.com</a></p>
-            <p><a href="http://blog.csdn.net/u014426752"><img src="images/link.png"></a>个人博客：<a href="http://blog.csdn.net/u014426752">http://blog.csdn.net/u014426752</a></p>
-            <p><a href="https://github.com/Wineki"><img src="images/home.png"></a>gitbuh主页：<a href="https://github.com/Wineki">https://github.com/Wineki</a></p>
+            <p><img src="images/portfolio.png">电话：186-1139-9041 </p>
+            <p><a href="wuning_aiali@163.com"><img src="images/mail.png"></a>邮箱：<a href="wuning_aiali@163.com">wuning_aiali@163.com</a></p>
+            <p><a href="http://blog.csdn.net/u014426752"><img src="images/rss.png"></a>个人博客：<a href="http://blog.csdn.net/u014426752">http://blog.csdn.net/u014426752</a></p>
+            <p><a href="https://github.com/Wineki"><img src="images/link.png"></a>gitbuh主页：<a href="https://github.com/Wineki">https://github.com/Wineki</a></p>
       	</div>
         <div class="girl"><img src="images/girl.png"></div>
         <div id="informat" class="informat">
@@ -75,39 +88,38 @@ img{width:100px;height:100px;}
      <div class="section section2" id="job">
      	<div class="blackbord" style="text-align:center">
         <h3 style="position:relative;bottom:-10%;">求职意向</h3>
-        <p>前端开发</p>
+        <h5>前端开发</h5>
         <div class="words"><img src="images/2.png"></div>
         <div class="hend"><img src="images/shou.png"></div>
         </div>
 	</div>
     <div class="section section3" id="exp">
     
-        <h3>我的作品</h3>
-        <p>12345</p>
-        <div class="caodi"><img src="images/caodi.png"></div>
+        <h3 style="color:#2ECBC4;">我的作品</h3>
+        <div class="dibiao1" style="position:absolute; left:280px; top:310px;"><a href="http://cosmetics.ifeng.com/weixin/play?from=singlemessage&isappinstalled=0"><img src="images/tubiao1.png"></a></div>
+        <div class="wxhzp"><p><a href="http://cosmetics.ifeng.com/weixin/play?from=singlemessage&isappinstalled=0">微信化妆品小游戏开发</a></p></div>
+        <div class="dibiao2" style="position:absolute; left:700px; top:10px;"><a href="others/Doraemon.html"><img src="images/tubiao2.png"></a></div>
+        <div class="dola"><p><a href="others/Doraemon.html">CSS Doraemon</a></p></div>
+        <div class="dibiao3" style="position:absolute; right:250px; top:320px;"><a href="others/eluosi.html"><img src="images/tubiao3.png"></a></div>
+        <div class="eluosi"><p><a href="others/eluosi.html">俄罗斯方块</a></p></div> 
 	</div>
-    <div class="section section4" id="abl">
-        <h3>社团及项目经历</h3>
+    <div class="section section4" id="exp">
+        <h3 style="color:#6C9;">项目经历</h3>
         <p>HTML js CSS</p>
+        <div class="caodi"><img src="images/caodi.png"><img src="images/caodi.png"><img src="images/caodi.png"><img src="images/caodi.png"><img src="images/caodi.png"><img src="images/caodi.png"></div>
+        <div class="exp1"><img src="images/php.jpg"><img src="images/xiaoren.png" style="width:200px; height:200px;"></div>
+        <div class="exp2"><img src="images/dadou.jpg"></div>
 	</div>
-    <div class="section section5" id="exp">
+    <div class="section section5" id="abl">
         <h3>专业技能</h3>
-        <p>12345</p>
+        <div class="abl"></div>
 	</div>
     <div class="section section6" id="info">
         <h3>自我评价</h3>
         <p>one  two</p>
 	</div>
-    <div class="section section7" id="job">
-        <h3>我的作品</h3>
-        <p>1234567</p>
-	</div>
-    <div class="section section8" id="exp">
-        <h3>联系我</h3>
-        <p>wuning_aiali@163.com</p>
-	</div>
-    
 </div>
+<script src="js/main2.js"></script>
 </body>
 </html>
 

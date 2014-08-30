@@ -1,0 +1,442 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>俄罗斯方块</title>
+<style type="text/css">
+.thinBorderTable{border-collapse:collapse; border:#666;}
+.thinBorderTable th{background:#FFF;border:solid 1px #000000;}
+.thinBorderTable tr{background:#FFF;border:solid 1px #000;}
+</style>
+</head>
+
+<body>
+<div id="game" align="center">
+<h2><span style="font-size:20px; color:#F9C">俄罗斯方块</span></h2>
+<table>
+<tr>
+	<td>
+        <div id="content" style="width:200px;"></div>
+    </td>
+    <td>
+    	<div id="control" style="width:200px;"></div>
+    </td>
+</tr>
+</table>
+</div>
+<script type="text/javascript">
+ var column = 10;
+ var row = 20;
+ var size = 20;
+ var bottom = [];
+ var timer = function(){};
+ var currentTime = 0;
+ var score = 0;
+ var speed = 1;
+ 
+ function init(){
+ 	var tableHtml = "<table id='screen' class='thinBorderTable'>";
+	for(var i=0;i<row;i++){
+		tableHtml += "<tr height='" + size + "' align='center'>";
+		for(var j=0;j<column;j++){
+			tableHtml += "<th id='th" + (i * column+ j) +"' width='" + size + "'></th>";
+		}
+		tableHtml += "</tr>";
+	}
+	tableHtml += "</table>";
+	document.getElementById("content").innerHTML = tableHtml;
+	
+	var nextHtml = "<table id='showNextBlock' class='thinBorderTable' style='font-size: 8'>";
+	for(var i=0;i<4;i++){
+		nextHtml += "<tr height='15' align='center'>";
+		for(var j=0;j<4;j++){
+			nextHtml += "<th width='15'> </th>";
+		}
+		nextHtml += "</tr>";
+	}
+	nextHtml += "</table>";
+	
+	
+	var controlHtml = "<fieldset><legend>显示区域</legend><table>";
+	controlHtml += "<tr><th>当前速度：</th><th><span id='speed'>1</span></th></tr>";
+	controlHtml += "<tr><th>当前分数：</th><th><span id='score'>0</span></th></tr>";
+	controlHtml += "<tr><th>当前时间：</th><th><span id='currentTime'>00:00</th></tr>";
+	controlHtml += "<tr><th colspan='2'>" + nextHtml + "</th></tr>";
+	controlHtml += "</table></fieldset>";
+	controlHtml += "<fieldset><legend>控制区域</legend><table>";
+	controlHtml += "<tr><th><input id='btnstart' type='button' value='开始' onclick='start()' /></th></tr>";
+	controlHtml += "<tr><th><input id='btnpause' type='button' value='暂停' onclick='pause()' /></th></tr>";
+	controlHtml += "<tr><th><input id='btend' type='button' value='结束' onclick='end()' /></th></tr>";
+	controlHtml += "</table></fieldset>";
+	//document.getElementById("control").innerHTML = nextHtml;
+	document.getElementById("control").innerHTML = controlHtml;
+	document.getElementById("btnpause").disabled = true;
+	document.getElementById("btend").disabled = true;
+	
+	currentTime = 0;
+	score = 0;
+	speed = 1;
+	
+	for(var i=0;i<row;i++){
+		bottom[i] = [];
+		for(var j=0;j<column;j++){
+			bottom[i][j] = 0;
+		}
+	}
+	showNextBlock(Factory.creatBlocks());
+	next();
+ }
+ 
+ 
+ var Factory = {
+	 maps:[
+	 	[
+			[1,1,1,1, 0,0,0,0, 0,0,0,0, 0,0,0,0],
+			[1,0,0,0, 1,0,0,0, 1,0,0,0, 1,0,0,0]
+		],
+		[
+			[1,1,1,0, 1,0,0,0, 0,0,0,0, 0,0,0,0],  
+			[1,1,0,0, 0,1,0,0, 0,1,0,0, 0,0,0,0],  
+			[0,0,1,0, 1,1,1,0, 0,0,0,0, 0,0,0,0],  
+			[1,0,0,0, 1,0,0,0, 1,1,0,0, 0,0,0,0]
+		],
+		[  
+			[1,1,1,0, 0,1,0,0, 0,0,0,0, 0,0,0,0],  
+			[0,1,0,0, 1,1,0,0, 0,1,0,0, 0,0,0,0],  
+			[0,1,0,0, 1,1,1,0, 0,0,0,0, 0,0,0,0],  
+			[1,0,0,0, 1,1,0,0, 1,0,0,0, 0,0,0,0]  
+		],  
+		[  
+			[1,1,1,0, 0,0,1,0, 0,0,0,0, 0,0,0,0],  
+			[0,1,0,0, 0,1,0,0, 1,1,0,0, 0,0,0,0],  
+			[1,0,0,0, 1,1,1,0, 0,0,0,0, 0,0,0,0],  
+			[1,1,0,0, 1,0,0,0, 1,0,0,0, 0,0,0,0]  
+		],  
+		[  
+			[1,1,0,0, 0,1,1,0, 0,0,0,0, 0,0,0,0],  
+			[0,1,0,0, 1,1,0,0, 1,0,0,0, 0,0,0,0]  
+		],  
+		[  
+			[1,0,0,0, 1,1,0,0, 0,1,0,0, 0,0,0,0],  
+			[0,1,1,0, 1,1,0,0, 0,0,0,0, 0,0,0,0]  
+		],  
+		[  
+			[1,1,0,0, 1,1,0,0, 0,0,0,0, 0,0,0,0]  
+		]  
+	 ],
+	 index:0,
+	 status:0,
+	 oldIndex:0,
+	 oldStatus:0,
+	 creatBlocks: function(){
+	 	this.oldIndex = this.index;
+		this.oldStatus = this.status;
+		this.index = Math.floor(Math.random() * this.maps.length);
+		this.status = Math.floor(Math.random() * this.maps[this.index].length);
+		return this.getCurrentBlock();
+	 },
+	 getCurrentBlock: function(){
+	 	return this.maps[this.index][this.status];
+	 },
+	 getNextStatus: function(){
+	 	this.oldStatus ++;
+		this.oldStatus %= this.maps[this.oldIndex].length;
+		return this.maps[this.oldIndex][this.oldStatus];
+	 }
+ };
+ 
+ function showNextBlock(block){
+ 	var table = document.getElementById("showNextBlock");
+	var tds = table.getElementsByTagName("th");
+	for(var i=0;i<tds.length;i++){
+		if(block[i] == 1){
+			tds[i].style.backgroundColor = "blue";
+		}
+		else{
+			tds[i].style.backgroundColor = "white";
+		}
+	}
+ }
+ 
+ function  up(){
+ 	var oldBlock = Block.block;
+	Block.block = Factory.getNextStatus();
+	for(var i=0;i<Block.block.length;i++){
+		if(Block.block[i]==1){
+			if(i % 4 + Block.x >= column)
+			{
+				Block.x--;
+				break;
+			}
+			
+			var m = Math.floor(i/4);
+			var n = i%4;
+			
+			if(m + Block.y >= row){
+				Block.y--;
+				break;
+			}
+		}
+	}
+	
+ }
+ 
+ 
+ function down(){
+ 	Block.y++;
+	if(!isDownable()){
+		Block.y--;
+		accept(Block);
+	}
+	reshow();
+ }
+ 
+ function left(){
+ 	Block.x--;
+	if(Block.x<0){
+		Block.x = 0;
+	}
+	reshow();
+ }
+ 
+ function right(){
+ 	Block.x++;
+	for(var i = 0;i<Block.block.length;i++){
+		if(Block.block[i] == 1 && i % 4 +Block.x >= column){
+			Block.x--;
+			break;
+		}
+	}
+	reshow();
+ }
+ 
+ function isDownable(){
+ 	for(var i = 0; i<Block.block.length; i++){
+		var x = i % 4;
+		var y = Math.floor(i/4);
+		if(y + Block.y < 0)
+		{
+			continue;
+		}
+		
+		if(Block.block[i] == 1 && y + Block.y >= row){
+			return false;
+		}
+		
+		if(Block.block[i] == 1 && bottom[y+Block.y][x+Block.x] == 1){
+			return false;
+		}
+	}
+	return true;
+ }
+ 
+ 
+ function accept(){
+ 	for(var i = 0; i<Block.block.length; i++){
+		if(Block.block[i] == 1){
+			var m = Math.floor(i/4);
+			var n = i%4;
+			if(m + Block.y<0){
+				clearInterval(timer);
+				alert("您的得分是："+score+"!\n结束游戏！！！");
+				if(confirm("还想挑战？？？")){
+					init();
+					start();
+				}
+				return;
+			}
+			bottom[m+Block.y][n+Block.x] = 1;
+		}
+	}
+	disappear();
+	
+	next();
+ }
+ 
+ 
+ function disappear(){
+ 	var line = 0;
+	var r = Block.y + 4 - 1;
+	if(r>19)
+	{
+		r = 19;
+	}
+	for(var i=r; i>=Block.y; i--){
+		var flag = false;
+		var disappearable = true;
+		for(var j=0; j<bottom[i].length;j++){
+			if(bottom[i][j]==0){
+				disappearable = false;
+				break;
+			}
+		}
+		if(disappearable){
+			line ++;
+			for(var k=i; k>0; k--){
+				for(var j=0; j<bottom[i].length;j++){
+					bottom[k][j] = bottom[k-1][j];
+				}
+			}
+			reshow();
+			
+			i ++;
+		}
+	}
+	
+	switch(line)
+	{
+		case 1:
+			score += 10;
+			break;
+		case 2:
+			score += 30;
+			break;
+		case 3:
+			score += 60;
+			break;
+		case 4:
+			score += 100;
+			break;
+	}
+	document.getElementById("score").innerHTML = score;
+ }
+ 
+ function changeSpeed(){
+ 	var args = Math.floor(score / 100)
+	if(args >= 5){
+		speed = 5;
+	}
+	else
+	{
+		speed = args + 1;
+	}
+	document.getElementById("speed").innerHTML = speed;
+ }
+ 
+ function next(){
+ 	Block.init(Factory.getCurrentBlock());
+	showNextBlock(Factory.creatBlocks());
+ }
+ 
+ function reshow(){
+ 	var table = document.getElementById("screen");
+	var tds = table.getElementsByTagName("th");
+	for(var i=0;i<tds.length;i++){
+		var m = Math.floor(i / column);
+		var n = i % column;
+		if(bottom[m][n] == 1){
+			//alert("$$$");
+			tds[i].style.background="blue";
+		}
+		else
+		{
+			//alert("***");
+			tds[i].style.background="white";
+		}
+	}
+	for(var i=0; i<Block.block.length; i++){
+		var m = Math.floor(i / 4);
+		var n =i % 4;
+		if(m + Block.y >= 0 && Block.block[i] == 1){
+			var k = (m + Block.y) * column + Block.x + n;
+			document.getElementById('th'+k ).style.backgroundColor = "blue";
+		}
+	}
+ }
+ 
+ 
+ function updateTime(){
+ 	var currentTimeLabel = document.getElementById("currentTime");
+	currentTime ++;
+	currentTimeLabel.innerHTML = formatTime(currentTime);
+ }
+ 
+ function formatTime(time){
+ 	var m = Math.floor(time/60);
+	var s = time % 60;
+	
+	var str="";
+	if(m < 10){
+		str = "0";
+	}
+	str += m +":";
+	if(s < 10){
+		str += "0";
+	}
+	str += s;
+	return str;
+ }
+ 
+ 
+ var Block={
+ 	x:0,
+	y:0,
+	block:new Array(),
+	init:function(block){
+		this.x = 4;
+		this.y = -3;
+		this.block = block;
+	}
+ };
+ 
+ function start(){
+ 	document.getElementById("btnstart").disabled = true;
+	document.getElementById("btnpause").disabled = false;
+	document.getElementById("btend").disabled = false;
+	timer = setInterval("down();updateTime();", 1100 -50*speed);
+ }
+ 
+ function pause(){
+ 	document.getElementById("btnpause");
+	if(btnpause.value=="暂停"){
+		btnpause.value = "恢复";
+		clearInterval(timer);
+	}
+	else{
+		btnpause.value = "暂停";
+		timer = setInterval("down();updateTime();",1100-50*speed);
+	}
+ }
+ 
+ function end(){
+ 	if(confirm("确定要结束游戏？？")){
+		document.getElementById("btnstart").disabled = false;
+		document.getElementById("btnpause").disabled = true;
+		document.getElementById("btend").disable = true;
+		clearInterval(timer);
+		init();
+	}
+ }
+ 
+ function KeyUp(e){
+ 	if(navigator.appName == "Microsoft Internet Explorer"){
+		keyAction(event.keyCode);
+	}
+ else
+ {
+	 keyAction(e.which);
+ }
+ }
+ 
+ 
+ function keyAction(key){
+ 	switch(key){
+		case 37:
+			left();
+			break;
+		case 38:
+			up();
+			break;
+		case 39:
+			right();
+			break;
+		case 40:
+			down()
+			break;
+	}
+ }
+ init();
+ document.onkeyup = KeyUp;
+</script>
+</body>
+</html>
