@@ -121,9 +121,7 @@ $(document).ready(function() {
 					},1500,'easeOutExpo');
 			}
 			if(index == '6'){
-				$('.section5').find('p').delay(500).animate({
-					left: '-120%'
-				}, 1500, 'easeOutExpo');
+				
 			}
 			if(index == '7'){
 				$('.section6').find('p').delay(500).animate({
