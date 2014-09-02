@@ -21,10 +21,10 @@ $(document).ready(function() {
 			}
 			if(index == 2){
 				$('.section1').find('p').delay(500).animate({
-					bottom: '0'
+					bottom: '50'
 				}, 1500, 'easeOutExpo');
 				$('.niu').animate({
-					bottom: '0'
+					top: '0%'
 				}, 1500, 'easeOutExpo');
 				$('.girl').delay('500').animate({left: "-=300px"},1500);
 				
@@ -55,17 +55,11 @@ $(document).ready(function() {
 			}
 			if(index == 6){
 				$('.ablw').find('p').animate({
-					height:"0px",width:"0px"
+					left:'80%'
 				}, 1000, 'easeOutExpo');
 				
 				$('.abl').find('img').animate({
-					height:"0px",width:"0px"
-				}, 1500, 'easeOutExpo');
-				$('.ablw').find('p').animate({
-					width:"600px"
-				},0, 'easeOutExpo');
-				$('.abl').find('img').animate({
-					height:"700px",width:"600px"
+					width:'500px',height:'600px'
 				}, 1500, 'easeOutExpo');
 				
 			}
@@ -121,7 +115,13 @@ $(document).ready(function() {
 					},1500,'easeOutExpo');
 			}
 			if(index == '6'){
+				$('.ablw').find('p').delay('500').animate({
+					left:'-30%'
+				}, 1000, 'easeOutExpo');
 				
+				$('.abl').find('img').delay('500').animate({
+					width:'0px',height:'600px'
+				}, 1500, 'easeOutExpo');
 			}
 			if(index == '7'){
 				$('.section6').find('p').delay(500).animate({

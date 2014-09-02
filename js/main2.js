@@ -13,4 +13,5 @@ $('.section3').find('p').mouseout(function(ev){
 });
 $('.hzp').find('p').click(function(){
 	alert("pc端效果糟糕，用你的手机微信扫一下二维码就可以看到啦~~");
+	preventDefault();  
 });
