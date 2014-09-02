@@ -56,14 +56,14 @@ $(document).ready(function() {
 			if(index == 6){
 				$('.ablw').find('p').animate({
 					height:"0px",width:"0px"
-				}, 1500, 'easeOutExpo');
+				}, 1000, 'easeOutExpo');
 				
 				$('.abl').find('img').animate({
 					height:"0px",width:"0px"
 				}, 1500, 'easeOutExpo');
 				$('.ablw').find('p').animate({
 					width:"600px"
-				}, 800, 'easeOutExpo');
+				},0, 'easeOutExpo');
 				$('.abl').find('img').animate({
 					height:"700px",width:"600px"
 				}, 1500, 'easeOutExpo');
