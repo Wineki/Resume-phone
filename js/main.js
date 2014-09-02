@@ -3,7 +3,7 @@ $(document).ready(function() {
 	$('.section0').find('p').delay(500).animate({
 					left: '0'
 				}, 1500, 'easeOutExpo');
-	$('#huojian').delay(1500).animate({
+	$('#huojian').delay(1000).animate({
 					left:'500',bottom:'500'
 				}, 1500,'easeOutExpo');
 	$.fn.fullpage({
@@ -67,10 +67,10 @@ $(document).ready(function() {
 				/*$('.section6').find('p').delay(500).animate({
 					bottom: '0'
 				}, 1500, 'easeOutExpo');*/
-				$('.lufei').find('img').fadeIn(6000);
+				$('.lufei').find('img').fadeIn(4000);
 				$('.sel').find('p').delay('2000').animate({
 					bottom:'-300'
-					},1500,'easeOutExpo');
+					},200,'easeOutExpo');
 			}
 		},
 		onLeave: function(index, direction){
