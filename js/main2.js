@@ -11,7 +11,4 @@ $('.section3').find('p').mouseover(function(ev){
 $('.section3').find('p').mouseout(function(ev){
        ev.target.style.fontSize = "25px";
 });
-$('.hzp').find('p').click(function(){
-	alert("pc端效果糟糕，用你的手机微信扫一下二维码就可以看到啦~~");
-	preventDefault();  
-});
+
